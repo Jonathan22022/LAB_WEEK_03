@@ -15,7 +15,6 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:textColor="@android:color/black"
         tools:text="@string/affogato_title"/>
 
     <View
@@ -31,7 +30,6 @@
         android:gravity="center"
         android:textSize="14sp"
         android:lineSpacingExtra="4dp"
-        android:textColor="@android:color/black"
         tools:text="@string/affogato_desc" />
 
 </LinearLayout>
