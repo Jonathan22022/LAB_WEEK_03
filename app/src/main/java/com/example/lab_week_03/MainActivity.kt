@@ -12,23 +12,18 @@ interface CoffeeListener {
     fun onSelected(coffeeId: Int)
 }
 
-class MainActivity : AppCompatActivity(), CoffeeListener {
+class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, ListFragment())
-                .commit()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.
+        fragment_container)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.
+            systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right,
+                systemBars.bottom)
+            insets
         }
-    }
-
-    override fun onSelected(coffeeId: Int) {
-        val detailFragment = DetailFragment.newInstance(coffeeId)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, detailFragment)
-            .addToBackStack(null) // supaya bisa balik ke ListFragment
-            .commit()
     }
 }
