@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -40,6 +42,9 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val coffeeId = arguments?.getInt(COFFEE_ID, 0) ?: 0
         setCoffeeData(coffeeId)
+        view.findViewById<Button>(R.id.btn_back).setOnClickListener {
+            requireView().findNavController().navigateUp()
+        }
     }
 
     fun setCoffeeData(id: Int) {
